@@ -66,7 +66,7 @@ The table with filtering functionality is built using React, which allows for sm
 git clone https://github.com/Sushank-ghimire/chai-machine-coding.git
 npm install
 npm run dev
-
+```
 
 ## License
 
