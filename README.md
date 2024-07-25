@@ -24,9 +24,50 @@ This project implements a simple OTP (One Time Password) sending functionality.
 - Resend OTP functionality
 - Countdown timer for resending OTP
 
+
+## Drag and Drop Courses with Priority
+
+This project allows users to drag and drop courses to prioritize them.
+
+### Features
+
+- Drag and drop functionality to reorder courses.
+- Persistent state to maintain course order.
+- Visual indicators for dragging and dropping.
+
+### Implementation Details
+
+The drag-and-drop functionality is implemented using the `@dnd-kit` library, which provides powerful and customizable drag-and-drop capabilities for React applications.
+
+
+# Table Data Filtering
+
+This project provides a table component that allows users to filter and search through data. It's designed to handle large datasets by enabling efficient filtering and user-friendly navigation.
+
+## Features
+
+- **Data Display**: Presents data in a structured table format.
+- **Filtering**: Users can apply filters to narrow down the displayed data based on various criteria.
+- **Searching**: Provides a search bar to filter data by keywords or specific fields.
+- **Dynamic Updates**: The table updates dynamically as users apply filters or perform searches.
+
+## Implementation Details
+
+The table with filtering functionality is built using React, which allows for smooth state management and user interactions. Key features include:
+
+- **Search Functionality**: A search bar filters the data in real-time based on the user's input.
+- **Filter Options**: Users can apply different filters to view subsets of the data.
+- **State Management**: React state is used to manage the current search query and active filters.
+
+
 ### Installation
 
 ```bash
 git clone https://github.com/Sushank-ghimire/chai-machine-coding.git
 npm install
 npm run dev
+
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
