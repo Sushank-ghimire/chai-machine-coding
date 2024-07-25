@@ -1,0 +1,7 @@
+#menu {
+    display: none;
+}
+
+.group:hover #menu, #menu:hover {
+    display: flex;
+}
