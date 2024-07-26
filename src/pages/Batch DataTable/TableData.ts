@@ -1,4 +1,4 @@
-export const tableData = [
+const tableData = [
   {
     id: 1,
     image: "https://via.placeholder.com/100?text=JavaScript",
@@ -360,4 +360,5 @@ const updatedTableData = tableData.map((item) => ({
   status: randomStatus(),
 }));
 
-console.log(updatedTableData);
+
+export default updatedTableData;
