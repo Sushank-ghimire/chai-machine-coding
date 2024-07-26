@@ -5,7 +5,6 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { DataTable, DragAndDrop, Verification } from "./pages/Export.tsx";
 import { Layout } from "./components/Export.tsx";
-import { DragDropContext } from 'react-beautiful-dnd';
 
 const router = createBrowserRouter([
   {
