@@ -63,7 +63,6 @@ const Verification = () => {
     if (combineOtp === "1234") {
       document.querySelector(".indigo")?.classList.remove("bg-indigo-900");
       setVerifyState("true");
-      alert("OTP Verified");
     } else {
       setVerifyState("false");
     }
