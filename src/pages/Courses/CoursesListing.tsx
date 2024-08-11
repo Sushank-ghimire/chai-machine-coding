@@ -2,18 +2,16 @@ import { CourseListProps } from "./Props.types";
 import { FaArrowUpLong, FaArrowDown } from "react-icons/fa6";
 import { MdOutlineDragIndicator, MdOutlineDelete } from "react-icons/md";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import {
-  SortableContext,
-  useSortable,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
+import { Reorder } from "framer-motion";
+import { useMotionValue } from "framer-motion";
+import { useRaisedShadow } from "./use-raised-shadow";
 
 const CoursesListing = ({
   courses,
   deleteCourse,
   onMoveToBottom,
   onMoveToTop,
+  setChaiCourses,
 }: CourseListProps) => {
   // Check if courses is an array and contains items with id
   if (!Array.isArray(courses) || courses.length === 0) {
@@ -21,12 +19,14 @@ const CoursesListing = ({
     return <div>Error: Invalid courses data.</div>;
   }
 
-  const courseIds = courses.map((course) => course.id); // Extract IDs
+  const y = useMotionValue(0);
+  const boxShadow = useRaisedShadow(y);
 
   return (
-    <SortableContext
-      items={courseIds} // Pass the array of IDs to SortableContext
-      strategy={verticalListSortingStrategy}
+    <Reorder.Group
+      className="space-y-4"
+      onReorder={setChaiCourses}
+      values={courses}
     >
       {courses.map((course: any, index: number) => {
         if (!course || !course.id) {
@@ -34,22 +34,13 @@ const CoursesListing = ({
           return null; // Skip rendering this item
         }
 
-        const { id } = course.id;
-        const { attributes, listeners, setNodeRef, transform, transition } =
-          useSortable({ id });
-        const style = {
-          transform: CSS.Transform.toString(transform),
-          transition,
-        };
-
         return (
-          <div
+          <Reorder.Item
+            style={{ boxShadow }}
+            value={course}
+            id={course.id}
             key={course.id}
             draggable="true"
-            style={style}
-            ref={setNodeRef}
-            {...listeners}
-            {...attributes}
             className="w-[70%] relative hover:shadow-md transition-all text-xl p-3 md:text-2xl flex justify-between bg-slate-50"
           >
             <div className="text-3xl flex items-center space-x-4">
@@ -101,10 +92,10 @@ const CoursesListing = ({
                 </div>
               </p>
             </div>
-          </div>
+          </Reorder.Item>
         );
       })}
-    </SortableContext>
+    </Reorder.Group>
   );
 };
 

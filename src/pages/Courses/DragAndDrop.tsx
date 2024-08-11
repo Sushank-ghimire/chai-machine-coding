@@ -1,8 +1,6 @@
 import { courseList } from "./CoursesList";
 import "./Course.css";
 import { useCallback, useEffect, useState } from "react";
-import { DndContext } from "@dnd-kit/core";
-import { arrayMove } from "@dnd-kit/sortable";
 import CoursesListing from "./CoursesListing";
 import { Courses } from "./Props.types";
 
@@ -41,23 +39,6 @@ const DragAndDrop = () => {
     setChaiCourses(updatedList);
   };
 
-  const getTaskPosition = (id: number) =>
-    chaiCourse.findIndex((course: any) => course.id === id);
-
-  
-  const handleDragEnd = (event: any) => {
-    const { over, active } = event;
-    console.log({ active, over });
-    
-    if (active.id === over?.id) return;
-    
-    setChaiCourses((courses: any) => {
-      const orignalPosition = getTaskPosition(active.id);
-      const newPosition = getTaskPosition(over.id);
-      console.log({ orignalPosition, newPosition });
-      return arrayMove(courses, orignalPosition, newPosition);
-    });
-  };
   
   return (
     <div className="w-[90vw] m-auto mt-4 text-xl md:text-2xl pb-12 overflow-x-hidden">
@@ -70,14 +51,12 @@ const DragAndDrop = () => {
           Manage orders of the products based on the priority. <span className="text-red-400">Delete and drag-drop functionality are not working properly it will be updated soon</span>
         </p>
         <div className="mt-3 flex flex-col space-y-4 md:ml-4 justify-between">
-          <DndContext onDragStart={handleDragEnd}>
             <CoursesListing
             setChaiCourses={setChaiCourses}
             onMoveToBottom={onMoveToBottom}
             onMoveToTop={onMoveToTop}
             courses={chaiCourse}
             deleteCourse={deleteCourse}  />
-          </DndContext>
         </div>
       </div>
     </div>
