@@ -48,8 +48,7 @@ const DragAndDrop = () => {
       <div className="w-[90%] p-4 rounded bg-white text-black m-auto">
         <h1 className="font-bold text-xl md:text-3xl">Manage Bundle</h1>
         <p className="text-[18px] font-light text-slate-700">
-          Manage orders of the products based on the priority. <span className="text-red-400">Delete and drag-drop functionality are not working properly it will be updated soon</span>
-        </p>
+          Manage orders of the products based on the priority.</p>
         <div className="mt-3 flex flex-col space-y-4 md:ml-4 justify-between">
             <CoursesListing
             setChaiCourses={setChaiCourses}
